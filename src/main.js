@@ -1,18 +1,27 @@
+/*
+ * @Author: Sunny
+ * @Date: 2022-01-05 10:30:00
+ * @LastEditors: Suuny
+ * @LastEditTime: 2022-01-05 11:56:57
+ * @Description:
+ * @FilePath: \vue-element-admin\src\main.js
+ */
 import Vue from 'vue'
 
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie' // 处理cookie的库
 
-import 'normalize.css/normalize.css' // a modern alternative to CSS resets
+import 'normalize.css/normalize.css' // 定制化css 重置一些css 文件
 
+// 引入 element-ui
 import Element from 'element-ui'
 import './styles/element-variables.scss'
 import enLang from 'element-ui/lib/locale/lang/en'// 如果使用中文语言包请默认支持，无需额外引入，请删除该依赖
 
-import '@/styles/index.scss' // global css
+import '@/styles/index.scss' // 引入全局的 css 文件
 
-import App from './App'
-import store from './store'
-import router from './router'
+import App from './App' // 主组件
+import store from './store' // 状态管理
+import router from './router' // 路由文件
 
 import './icons' // icon
 import './permission' // permission control
@@ -28,7 +37,7 @@ import * as filters from './filters' // global filters
  * Currently MockJs will be used in the production environment,
  * please remove it before going online ! ! !
  */
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') { // 生产环境
   const { mockXHR } = require('../mock')
   mockXHR()
 }

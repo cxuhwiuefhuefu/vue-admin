@@ -1,3 +1,11 @@
+/*
+ * @Author: Sunny
+ * @Date: 2022-01-05 10:30:00
+ * @LastEditors: Suuny
+ * @LastEditTime: 2022-01-05 16:19:55
+ * @Description:
+ * @FilePath: \vue-element-admin\src\router\modules\charts.js
+ */
 /** When your routing table is too long, you can split it into small modules**/
 
 import Layout from '@/layout'

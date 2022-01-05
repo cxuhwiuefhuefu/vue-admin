@@ -1,11 +1,17 @@
+<!-- 滚动窗格 -->
 <template>
-  <el-scrollbar ref="scrollContainer" :vertical="false" class="scroll-container" @wheel.native.prevent="handleScroll">
+  <el-scrollbar
+    ref="scrollContainer"
+    :vertical="false"
+    class="scroll-container"
+    @wheel.native.prevent="handleScroll"
+  >
     <slot />
   </el-scrollbar>
 </template>
 
 <script>
-const tagAndTagSpacing = 4 // tagAndTagSpacing
+const tagAndTagSpacing = 4 // tagAndTagSpacing 标签与标签之间的距离
 
 export default {
   name: 'ScrollPane',
@@ -16,6 +22,7 @@ export default {
   },
   computed: {
     scrollWrapper() {
+      console.log(' this.$refs.scrollContainer.$refs.wrap', this.$refs.scrollContainer)
       return this.$refs.scrollContainer.$refs.wrap
     }
   },
@@ -26,6 +33,7 @@ export default {
     this.scrollWrapper.removeEventListener('scroll', this.emitScroll)
   },
   methods: {
+    // 当鼠标滚轮滚动时，控制滚动条就移动
     handleScroll(e) {
       const eventDelta = e.wheelDelta || -e.deltaY * 40
       const $scrollWrapper = this.scrollWrapper

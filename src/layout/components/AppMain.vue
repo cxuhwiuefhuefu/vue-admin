@@ -1,3 +1,11 @@
+<!--
+ * @Author: Sunny
+ * @Date: 2022-01-05 10:30:00
+ * @LastEditors: Suuny
+ * @LastEditTime: 2022-01-05 18:33:14
+ * @Description: 主要内容区域
+ * @FilePath: \vue-element-admin\src\layout\components\AppMain.vue
+-->
 <template>
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
@@ -12,10 +20,12 @@
 export default {
   name: 'AppMain',
   computed: {
-    cachedViews() {
+    cachedViews() { // 控制页面是否可以被缓存 切换流畅些
+      // console.log(' this.$store.state.tagsView.cachedViews', this.$store.state.tagsView.cachedViews)
       return this.$store.state.tagsView.cachedViews
     },
-    key() {
+    key() { // 不复用组件
+      // console.log('this.$route.path', this.$route.path)
       return this.$route.path
     }
   }
@@ -31,7 +41,7 @@ export default {
   overflow: hidden;
 }
 
-.fixed-header+.app-main {
+.fixed-header + .app-main {
   padding-top: 50px;
 }
 
@@ -41,7 +51,7 @@ export default {
     min-height: calc(100vh - 84px);
   }
 
-  .fixed-header+.app-main {
+  .fixed-header + .app-main {
     padding-top: 84px;
   }
 }

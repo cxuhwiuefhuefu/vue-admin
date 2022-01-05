@@ -1,3 +1,11 @@
+/*
+ * @Author: Sunny
+ * @Date: 2022-01-05 10:30:00
+ * @LastEditors: Suuny
+ * @LastEditTime: 2022-01-05 16:16:12
+ * @Description: 权限信息
+ * @FilePath: \vue-element-admin\src\store\modules\permission.js
+ */
 import { asyncRoutes, constantRoutes } from '@/router'
 
 /**
@@ -5,6 +13,7 @@ import { asyncRoutes, constantRoutes } from '@/router'
  * @param roles
  * @param route
  */
+// 是否有权限
 function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
     return roles.some(role => route.meta.roles.includes(role))
@@ -18,7 +27,9 @@ function hasPermission(roles, route) {
  * @param routes asyncRoutes
  * @param roles
  */
+// 过滤异步路由 (有权限的路由)
 export function filterAsyncRoutes(routes, roles) {
+  console.log(routes, roles)
   const res = []
 
   routes.forEach(route => {
@@ -30,7 +41,7 @@ export function filterAsyncRoutes(routes, roles) {
       res.push(tmp)
     }
   })
-
+  // console.log('res', res)
   return res
 }
 
@@ -41,13 +52,14 @@ const state = {
 
 const mutations = {
   SET_ROUTES: (state, routes) => {
+    console.log(state, routes)
     state.addRoutes = routes
     state.routes = constantRoutes.concat(routes)
   }
 }
 
 const actions = {
-  generateRoutes({ commit }, roles) {
+  generateRoutes({ commit }, roles) { // 生成路由
     return new Promise(resolve => {
       let accessedRoutes
       if (roles.includes('admin')) {
